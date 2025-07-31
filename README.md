@@ -54,42 +54,6 @@ This project is structured around the principles of Clean Architecture, dividing
 
 The key principle is the **Dependency Rule**: Dependencies always flow inwards. The outer layers depend on inner layers, but inner layers have no knowledge of outer layers.
 
-src/main/kotlin/com/thedaviddowdy/springboot_kotlin/
-├── application/
-│   ├── adapter/
-│   │   └── persistence/
-│   │       ├── entity/                 # JPA entities (infrastructure-specific)
-│   │       │   └── ArticleJpaEntity.kt
-│   │       ├── repository/             # Spring Data JPA repositories
-│   │       │   └── SpringArticleRepository.kt
-│   │       └── ArticlePersistenceAdapter.kt # Implements domain's ArticleRepositoryPort
-│   ├── service/                        # Implementations of Use Cases
-│   │   ├── CreateArticleService.kt
-│   │   ├── DeleteArticleService.kt
-│   │   ├── GetArticleService.kt
-│   │   └── UpdateArticleService.kt
-│   └── util/                           # Application-level utilities
-│       └── SlugGenerator.kt
-├── domain/
-│   ├── port/
-│   │   ├── in/                         # Inbound Ports (Use Case interfaces)
-│   │   │   ├── CreateArticleUseCase.kt
-│   │   │   ├── DeleteArticleUseCase.kt
-│   │   │   ├── GetArticleUseCase.kt
-│   │   │   └── UpdateArticleUseCase.kt
-│   │   └── out/                        # Outbound Ports (Repository interfaces)
-│   │       └── ArticleRepositoryPort.kt
-│   └── Article.kt                      # Pure domain entity
-├── presentation/
-│   ├── controller/                     # Spring REST Controllers
-│   │   └── ArticleController.kt
-│   └── dto/                            # Data Transfer Objects (API contract)
-│       ├── ArticleDto.kt
-│       ├── CreateArticleRequest.kt
-│       └── UpdateArticleRequest.kt
-└── SpringbootKotlinApplication.kt      # Main Spring Boot application entry point
-
-
 ## Technologies Used
 
 * **Kotlin:** Primary programming language.
